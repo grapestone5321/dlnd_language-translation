@@ -60,6 +60,30 @@ Implement the model_inputs() function to create TF Placeholders for the Neural N
 
 Return the placeholders in the following the tuple (input, targets, learning rate, keep probability, target sequence length, max target sequence length, source sequence length)
 
+### Process Decoder Input
 
+Implement process_decoder_input by removing the last word id from each batch in target_data and concat the GO ID to the begining of each batch.
 
+### Encoding
 
+Implement encoding_layer() to create a Encoder RNN layer:
+
+- Embed the encoder input using tf.contrib.layers.embed_sequence 
+- Construct a stacked tf.contrib.rnn.LSTMCell wrapped in a tf.contrib.rnn.DropoutWrapper 
+- Pass cell and embedded input to tf.nn.dynamic_rnn() 
+
+### Decoding - Training
+
+Create a training decoding layer:
+
+- Create a tf.contrib.seq2seq.TrainingHelper 
+- Create a tf.contrib.seq2seq.BasicDecoder 
+- Obtain the decoder outputs from tf.contrib.seq2seq.dynamic_decode 
+
+### Decoding - Inference
+
+Create inference decoder:
+
+- Create a tf.contrib.seq2seq.GreedyEmbeddingHelper 
+- Create a tf.contrib.seq2seq.BasicDecoder 
+- Obtain the decoder outputs from tf.contrib.seq2seq.dynamic_decode 
