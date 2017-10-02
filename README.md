@@ -87,3 +87,18 @@ Create inference decoder:
 - Create a tf.contrib.seq2seq.GreedyEmbeddingHelper 
 - Create a tf.contrib.seq2seq.BasicDecoder 
 - Obtain the decoder outputs from tf.contrib.seq2seq.dynamic_decode 
+
+## Build the Decoding Layer 
+
+Implement decoding_layer() to create a Decoder RNN layer.
+
+- Embed the target sequences
+- Construct the decoder LSTM cell (just like you constructed the encoder cell above)
+- Create an output layer to map the outputs of the decoder to the elements of our vocabulary
+- Use the your decoding_layer_train(encoder_state, dec_cell, dec_embed_input, target_sequence_length, max_target_sequence_length, output_layer, keep_prob) function to get the training logits.
+- Use your decoding_layer_infer(encoder_state, dec_cell, dec_embeddings, start_of_sequence_id, end_of_sequence_id, max_target_sequence_length, vocab_size, output_layer, batch_size, keep_prob) function to get the inference logits.
+
+Note: You'll need to use tf.variable_scope to share variables between training and inference.
+
+
+
