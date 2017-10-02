@@ -88,7 +88,7 @@ Create inference decoder:
 - Create a tf.contrib.seq2seq.BasicDecoder 
 - Obtain the decoder outputs from tf.contrib.seq2seq.dynamic_decode 
 
-## Build the Decoding Layer 
+### Build the Decoding Layer 
 
 Implement decoding_layer() to create a Decoder RNN layer.
 
@@ -99,6 +99,32 @@ Implement decoding_layer() to create a Decoder RNN layer.
 - Use your decoding_layer_infer(encoder_state, dec_cell, dec_embeddings, start_of_sequence_id, end_of_sequence_id, max_target_sequence_length, vocab_size, output_layer, batch_size, keep_prob) function to get the inference logits.
 
 Note: You'll need to use tf.variable_scope to share variables between training and inference.
+
+### Build the Neural Network
+
+Apply the functions you implemented above to:
+
+- Apply embedding to the input data for the encoder.
+- Encode the input using your encoding_layer(rnn_inputs, rnn_size, num_layers, keep_prob,  source_sequence_length, source_vocab_size, encoding_embedding_size).
+- Process target data using your process_decoder_input(target_data, target_vocab_to_int, batch_size) function.
+- Apply embedding to the target data for the decoder.
+- Decode the encoded input using your decoding_layer(dec_input, enc_state, target_sequence_length, max_target_sentence_length, rnn_size, num_layers, target_vocab_to_int, target_vocab_size, batch_size, keep_prob, dec_embedding_size) function.
+
+## Neural Network Training
+
+### Hyperparameters
+
+Tune the following parameters:
+
+- Set epochs to the number of epochs.
+- Set batch_size to the batch size.
+- Set rnn_size to the size of the RNNs.
+- Set num_layers to the number of layers.
+- Set encoding_embedding_size to the size of the embedding for the encoder.
+- Set decoding_embedding_size to the size of the embedding for the decoder.
+- Set learning_rate to the learning rate.
+- Set keep_probability to the Dropout keep probability
+- Set display_step to state how many steps between each debug output statement
 
 
 
