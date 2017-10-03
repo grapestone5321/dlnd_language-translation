@@ -150,4 +150,16 @@ To feed a sentence into the model for translation, you first need to preprocess 
 - Convert words into ids using vocab_to_int
 - Convert words not in the vocabulary, to the <UNK> word id.
 
+## Translate
 
+This will translate translate_sentence from English to French.
+
+## Imperfect Translation
+
+You might notice that some sentences translate better than others. Since the dataset you're using only has a vocabulary of 227 English words of the thousands that you use, you're only going to see good results using these words. For this project, you don't need a perfect translation. However, if you want to create a better translation model, you'll need better data.
+
+You can train on the WMT10 French-English corpus. This dataset has more vocabulary and richer in topics discussed. However, this will take you days to train, so make sure you've a GPU and the neural network is performing well on dataset we provided. Just make sure you play with the WMT10 corpus after you've submitted this project.
+
+## Submitting This Project
+
+When submitting this project, make sure to run all the cells before saving the notebook. Save the notebook file as "dlnd_language_translation.ipynb" and save it as a HTML file under "File" -> "Download as". Include the "helper.py" and "problem_unittests.py" files in your submission.
