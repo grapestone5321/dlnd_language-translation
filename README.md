@@ -126,5 +126,28 @@ Tune the following parameters:
 - Set keep_probability to the Dropout keep probability
 - Set display_step to state how many steps between each debug output statement
 
+### Build the Graph
+
+Build the graph using the neural network you implemented.
+
+Batch and pad the source and target sequences
+
+### Train
+
+Train the neural network on the preprocessed data. If you have a hard time getting a good loss, check the forms to see if anyone is having the same problem.
+
+### Save Parameters
+
+Save the batch_size and save_path parameters for inference.
+
+# Checkpoint
+
+## Sentence to Sequence
+
+To feed a sentence into the model for translation, you first need to preprocess it. Implement the function sentence_to_seq() to preprocess new sentences.
+
+- Convert the sentence to lowercase
+- Convert words into ids using vocab_to_int
+- Convert words not in the vocabulary, to the <UNK> word id.
 
 
